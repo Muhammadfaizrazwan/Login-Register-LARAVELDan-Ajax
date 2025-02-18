@@ -15,19 +15,19 @@ class SiswaController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi input
+
         $request->validate([
             'nama' => 'required|string|max:255',
             'kelas' => 'required|string|max:50',
         ]);
 
-        // Simpan ke database
+
         $siswa = Siswa::create([
             'nama' => $request->nama,
             'kelas' => $request->kelas,
         ]);
 
-        // Jika request melalui AJAX, kirimkan response JSON
+        
         if ($request->ajax()) {
             return response()->json([
                 'success' => true,

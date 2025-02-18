@@ -129,7 +129,7 @@
             </div>
         </form>
 
-        <!-- Tambahkan alert untuk menampilkan pesan -->
+        <!-- alert untuk menampilkan pesan -->
         <div id="alertMessage" class="alert d-none mt-3"></div>
 
 
@@ -138,7 +138,7 @@
 <script>
     $(document).ready(function () {
         $("#registerForm").submit(function (e) {
-            e.preventDefault(); // Mencegah reload halaman
+            e.preventDefault();
 
             let formData = {
                 _token: "{{ csrf_token() }}",
@@ -157,7 +157,7 @@
                             .removeClass("d-none alert-danger")
                             .addClass("alert-success")
                             .text(response.message);
-                        $("#registerForm")[0].reset(); // Reset form setelah berhasil
+                        $("#registerForm")[0].reset();
                     } else {
                         $("#alertMessage")
                             .removeClass("d-none alert-success")
@@ -183,7 +183,7 @@
 </script>
 
     </div>
-    <!-- Bootstrap 5 JS -->
+   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

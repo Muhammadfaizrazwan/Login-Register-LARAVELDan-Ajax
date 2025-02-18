@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SiswaController;
 
 
 
@@ -40,13 +41,7 @@ Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('acti
 Route::get('register', [RegisterController::class, 'register'])->name('register');
 Route::post('register/action', [RegisterController::class, 'actionregister'])->name('actionregister');
 
-
-use App\Http\Controllers\SiswaController;
-
 Route::get('/home', [SiswaController::class, 'master'])->name('home');
-
-
-
 
 Route::get('/home', [SiswaController::class, 'index'])->name('home');
 Route::post('/siswa/store', [SiswaController::class, 'store'])->name('siswa.store');

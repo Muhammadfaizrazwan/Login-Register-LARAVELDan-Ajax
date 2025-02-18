@@ -141,7 +141,7 @@
     <script>
         $(document).ready(function () {
             $("#siswaForm").submit(function (e) {
-                e.preventDefault(); // Mencegah reload
+                e.preventDefault();
 
                 let formData = {
                     _token: "{{ csrf_token() }}",
@@ -149,7 +149,7 @@
                     kelas: $("#kelas").val(),
                 };
 
-                // Tampilkan spinner loading
+
                 $("#btnText").text("Menyimpan...");
                 $("#loadingSpinner").removeClass("d-none");
                 $("#loadingSpinner").addClass("spinner-border spinner-border-sm");
@@ -159,12 +159,12 @@
                     type: "POST",
                     data: formData,
                     beforeSend: function () {
-                        // Tambahkan overlay loading
+
                         $("body").append('<div id="overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; z-index:1000;"><div class="spinner-border text-light" role="status"><span class="sr-only">Loading...</span></div></div>');
                     },
                     success: function (response) {
                         if (response.success) {
-                            // Tambah data baru ke tabel tanpa reload
+
                             $("tbody").append(`
                                 <tr>
                                     <td>${response.data.id}</td>
@@ -172,7 +172,7 @@
                                     <td>${response.data.kelas}</td>
                                 </tr>
                             `);
-                            $("#siswaForm")[0].reset(); // Reset form setelah sukses
+                            $("#siswaForm")[0].reset();
                         } else {
                             alert(response.message);
                         }
@@ -181,7 +181,7 @@
                         alert("Terjadi kesalahan!");
                     },
                     complete: function () {
-                        // Sembunyikan spinner loading dan overlay
+                        
                         $("#btnText").text("Simpan");
                         $("#loadingSpinner").addClass("d-none");
                         $("#loadingSpinner").removeClass("spinner-border spinner-border-sm");
